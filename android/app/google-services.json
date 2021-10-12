@@ -1,0 +1,76 @@
+{
+  "project_info": {
+    "project_number": "592961366785",
+    "project_id": "matchrdockerapp",
+    "storage_bucket": "matchrdockerapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:592961366785:android:ad091c40fc63844f984900",
+        "android_client_info": {
+          "package_name": "com.example.matchr_docker_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "592961366785-kapc0rns698c553933fubscgptdeu6s1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXDv1qWs6Y4OsoR7M_CoCz2PZT3Ontyhg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "592961366785-kapc0rns698c553933fubscgptdeu6s1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:592961366785:android:45d36aa8c9da28d9984900",
+        "android_client_info": {
+          "package_name": "com.example.plantsapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "592961366785-67qjn7r52h4rjll0kks5dh22hhvrr8j6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.plantsapp",
+            "certificate_hash": "3369978abe752689cae83a108137b6a81199d4ec"
+          }
+        },
+        {
+          "client_id": "592961366785-kapc0rns698c553933fubscgptdeu6s1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXDv1qWs6Y4OsoR7M_CoCz2PZT3Ontyhg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "592961366785-kapc0rns698c553933fubscgptdeu6s1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
