@@ -10,7 +10,18 @@ class EmailSignUpPage extends StatelessWidget {
   final TextEditingController _confirmPasswordController =
       TextEditingController();
 
-    
+  String? validateName(value) {
+    bool validate = RegExp('[0-9]').hasMatch(value);
+    return validate ? null : 'Name not accepted';
+  }
+
+  String? validateEmail(value) {
+    bool validate = RegExp(
+            r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+        .hasMatch(value);
+    return validate ? null : 'Email not accepted';
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,89 +31,106 @@ class EmailSignUpPage extends StatelessWidget {
         backgroundColor: Colors.green.shade100,
         iconTheme: IconThemeData(
           color: Colors.black,
-          ),
         ),
+      ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(
             vertical: 30,
             horizontal: 30,
           ),
-          child: Column(
-            children: [
-              SizedBox(
-                height: 50,
-              ),
-              textFormField(
-                controller: _nameController,
-                title: 'Enter Name',
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              textFormField(
-                controller: _emailController,
-                title: 'Enter E-Mail',
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          child: SingleChildScrollView(
+            child: Container(
+              height: MediaQuery.of(context).size.height,
+              child: Column(
                 children: [
+                  SizedBox(
+                    height: 50,
+                  ),
+                  textFormField(
+                    controller: _nameController,
+                    title: 'Enter Name',
+                    validator: validateName,
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  textFormField(
+                    controller: _emailController,
+                    title: 'Enter E-Mail',
+                    validator: validateEmail,
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        width: 155,
+                        child: textFormField(
+                          controller: _passwordController,
+                          title: 'Password',
+                        ),
+                      ),
+                      Container(
+                        width: 155,
+                        child: textFormField(
+                          controller: _confirmPasswordController,
+                          title: 'Repeat Password',
+                        ),
+                      )
+                    ],
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
                   Container(
-                    width: 155,
-                    child: textFormField(
-                      controller: _passwordController,
-                      title: 'Password',
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 30,
+                      vertical: 10,
+                    ),
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Colors.teal,
+                      ),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(50),
+                      ),
+                      color: Colors.teal.shade800,
+                    ),
+                    child: TextButton(
+                      onPressed: () {},
+                      child: Text(
+                        'Sign Up',
+                        style: kSignUpTextStyle,
+                      ),
                     ),
                   ),
-                  Container(
-                    width: 155,
-                    child: textFormField(
-                      controller: _confirmPasswordController,
-                      title: 'Repeat Password',
+                  Spacer(),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      left: 10,
                     ),
-                  )
-                ],
-              ),
-              SizedBox(height: 20,),
-              Container(
-                padding: EdgeInsets.symmetric(
-                horizontal: 30,
-                vertical: 10,
-              ),
-                decoration: BoxDecoration(border: Border.all(
-                  color: Colors.teal,
-                  ),
-                  borderRadius: BorderRadius.all(Radius.circular(50),),
-                color: Colors.teal.shade800,
-                  ),
-                
-                child: Text('Sign Up', style: kSignUpTextStyle,),
-              ),
-              Spacer(),
-              Padding(
-              padding: const EdgeInsets.only(
-                left: 10,
-              ),
-              child: Row(
-                children: [
-                  Text(
-                    'Already have an account?',
-                    style: kButtonTextStyle,
-                  ),
-                  TextButton(
-                    onPressed: () {},
-                    child: Text(
-                      'Login!',
-                      style: kButtonTextStyle,
+                    child: Row(
+                      children: [
+                        Text(
+                          'Already have an account?',
+                          style: kButtonTextStyle,
+                        ),
+                        TextButton(
+                          onPressed: () {},
+                          child: Text(
+                            'Login!',
+                            style: kButtonTextStyle,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ],
               ),
             ),
-            ],
           ),
         ),
       ),
