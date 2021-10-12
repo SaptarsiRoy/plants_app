@@ -10,10 +10,18 @@ class EmailSignUpPage extends StatelessWidget {
   final TextEditingController _confirmPasswordController =
       TextEditingController();
 
+    
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.green.shade100,
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.green.shade100,
+        iconTheme: IconThemeData(
+          color: Colors.black,
+          ),
+        ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(
@@ -53,11 +61,47 @@ class EmailSignUpPage extends StatelessWidget {
                     width: 155,
                     child: textFormField(
                       controller: _confirmPasswordController,
-                      title: 'Confrim Password',
+                      title: 'Repeat Password',
                     ),
                   )
                 ],
-              )
+              ),
+              SizedBox(height: 20,),
+              Container(
+                padding: EdgeInsets.symmetric(
+                horizontal: 30,
+                vertical: 10,
+              ),
+                decoration: BoxDecoration(border: Border.all(
+                  color: Colors.teal,
+                  ),
+                  borderRadius: BorderRadius.all(Radius.circular(50),),
+                color: Colors.teal.shade800,
+                  ),
+                
+                child: Text('Sign Up', style: kSignUpTextStyle,),
+              ),
+              Spacer(),
+              Padding(
+              padding: const EdgeInsets.only(
+                left: 10,
+              ),
+              child: Row(
+                children: [
+                  Text(
+                    'Already have an account?',
+                    style: kButtonTextStyle,
+                  ),
+                  TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      'Login!',
+                      style: kButtonTextStyle,
+                    ),
+                  ),
+                ],
+              ),
+            ),
             ],
           ),
         ),
