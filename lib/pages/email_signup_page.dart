@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:srijan_app/constants.dart';
+import 'package:srijan_app/widgets/keyboard_visibilty_builder.dart';
 
 class EmailSignUpPage extends StatelessWidget {
   EmailSignUpPage({Key? key}) : super(key: key);
@@ -27,111 +28,82 @@ class EmailSignUpPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.green.shade100,
       appBar: AppBar(
-        elevation: 0,
+        elevation: 10,
         backgroundColor: Colors.green.shade100,
         iconTheme: IconThemeData(
           color: Colors.black,
         ),
       ),
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(
-            vertical: 30,
-            horizontal: 30,
-          ),
-          child: SingleChildScrollView(
-            child: Container(
-              height: MediaQuery.of(context).size.height,
-              child: Column(
+      body: Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: 30,
+        ),
+        child: Column(
+          children: [
+            SizedBox(
+              height: 50,
+            ),
+            textFormField(
+              controller: _nameController,
+              title: 'Enter Name',
+              validator: validateName,
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            textFormField(
+              controller: _emailController,
+              title: 'Enter E-Mail',
+              validator: validateEmail,
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  width: 155,
+                  child: textFormField(
+                    controller: _passwordController,
+                    title: 'Password',
+                  ),
+                ),
+                Container(
+                  width: 155,
+                  child: textFormField(
+                    controller: _confirmPasswordController,
+                    title: 'Repeat Password',
+                  ),
+                )
+              ],
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            HidingSignUpButton(),
+            Spacer(),
+            Padding(
+              padding: const EdgeInsets.only(
+                left: 10,
+              ),
+              child: Row(
                 children: [
-                  SizedBox(
-                    height: 50,
+                  Text(
+                    'Already have an account?',
+                    style: kButtonTextStyle,
                   ),
-                  textFormField(
-                    controller: _nameController,
-                    title: 'Enter Name',
-                    validator: validateName,
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  textFormField(
-                    controller: _emailController,
-                    title: 'Enter E-Mail',
-                    validator: validateEmail,
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Container(
-                        width: 155,
-                        child: textFormField(
-                          controller: _passwordController,
-                          title: 'Password',
-                        ),
-                      ),
-                      Container(
-                        width: 155,
-                        child: textFormField(
-                          controller: _confirmPasswordController,
-                          title: 'Repeat Password',
-                        ),
-                      )
-                    ],
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Container(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 30,
-                      vertical: 10,
-                    ),
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        color: Colors.teal,
-                      ),
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(50),
-                      ),
-                      color: Colors.teal.shade800,
-                    ),
-                    child: TextButton(
-                      onPressed: () {},
-                      child: Text(
-                        'Sign Up',
-                        style: kSignUpTextStyle,
-                      ),
-                    ),
-                  ),
-                  Spacer(),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      left: 10,
-                    ),
-                    child: Row(
-                      children: [
-                        Text(
-                          'Already have an account?',
-                          style: kButtonTextStyle,
-                        ),
-                        TextButton(
-                          onPressed: () {},
-                          child: Text(
-                            'Login!',
-                            style: kButtonTextStyle,
-                          ),
-                        ),
-                      ],
+                  TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      'Login!',
+                      style: kButtonTextStyle,
                     ),
                   ),
                 ],
               ),
             ),
-          ),
+          ],
         ),
       ),
     );
@@ -177,5 +149,42 @@ class EmailSignUpPage extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+class HidingSignUpButton extends StatelessWidget with WidgetsBindingObserver {
+  const HidingSignUpButton({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return KeyboardVisibilityBuilder(
+        builder: (context, child, isKeyboardVisible) {
+      return isKeyboardVisible
+          ? Container()
+          : Container(
+              padding: EdgeInsets.symmetric(
+                horizontal: 30,
+                vertical: 10,
+              ),
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: Colors.teal,
+                ),
+                borderRadius: BorderRadius.all(
+                  Radius.circular(50),
+                ),
+                color: Colors.teal.shade800,
+              ),
+              child: TextButton(
+                onPressed: () {},
+                child: Text(
+                  'Sign Up',
+                  style: kSignUpTextStyle,
+                ),
+              ),
+            );
+    });
   }
 }
