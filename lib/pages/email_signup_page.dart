@@ -28,7 +28,7 @@ class EmailSignUpPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.green.shade100,
       appBar: AppBar(
-        elevation: 10,
+        elevation: 0,
         backgroundColor: Colors.green.shade100,
         iconTheme: IconThemeData(
           color: Colors.black,
